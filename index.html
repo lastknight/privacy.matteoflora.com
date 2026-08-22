@@ -306,6 +306,9 @@
                             <li>
                                 <p>Aggiornamento canali, siti e servizi (Kit ex ConvertKit e newsletter Denkschule, Substack, gruppi WhatsApp e Telegram; rimozione di corsi.matteoflora.com e UTeach; pulizia dello storico Mailchimp; contatto per l’esercizio dei diritti uniformato): 20260721</p>
                             </li>
+                            <li>
+                                <p>Allineamento della sezione analytics allo stack reale (un’unica property Google Analytics per tutto l’ecosistema; esportazione dei dati grezzi su BigQuery; eventi inviati da server con Measurement Protocol; Google Analytics dichiarato anche su video.matteoflora.com e sul negozio Gumroad; elenco delle landing Kit aggiornato): 20260822</p>
+                            </li>
                         </ul>
 
 
@@ -770,7 +773,12 @@
                                 <ul>
                                     <li>
                                         <p><a href="#fly">Fly.io</a></p>
+                                    </li>
+                                    <li>
                                         <p><a href="#youtube-embed">YouTube Embed</a></p>
+                                    </li>
+                                    <li>
+                                        <p><a href="#google-analytics">Google Analytics</a> (misura anche quali episodi vengono aperti, come evento aggregato)</p>
                                     </li>
                                 </ul>
                             </li>
@@ -791,8 +799,7 @@
                             come il tracciamento dei link, l’ospitare le Landing Pages e gestire le statistiche.</p>
                         <ul>
                             <li>
-                                <p><strong>LANDING.MGPF.IT - ONFERENCE.IT - SLIDES.MATTEOFLORA.COM -
-                                        LANDING.MATTEOFLORA.COM - DOWNLOAD.MATTEOFLORA.com</strong> » Una serie di sottodomini gestiti da Kit (già ConvertKit) in cui sono pubblicate le varie landing page per iscriversi al Corso in Futuro, alla newsletter o che vengono create per scaricare le slide di qualche conferenza.<br/>Non differiscono da Kit, ma hanno nomi differenti a mero ausilio della mia memoria che arrivati in zona 50 anni non è più quella di una volta.</p>
+                                <p><strong>LANDING.MATTEOFLORA.COM</strong> (e gli alias storici <strong>LANDING.MGPF.IT - ONFERENCE.IT - DOWNLOAD.MATTEOFLORA.COM</strong>) » Sottodomini gestiti da Kit (già ConvertKit) in cui sono pubblicate le varie landing page: l’iscrizione alla newsletter Denkschule e al Corso in Futuro, il download dell’ebook <i>Tette e Gattini</i> (<i>/tette-e-gattini</i>), le pagine per scaricare slide e materiali di qualche conferenza (<i>/slides</i>, <i>/zeitgeist</i>, <i>/download</i>).<br/>Non differiscono da Kit, ma hanno nomi differenti a mero ausilio della mia memoria che arrivati in zona 50 anni non è più quella di una volta. Su tutte è attivo il mio Google Analytics, con un’unica configurazione per l’intero ecosistema.<br/><strong>SLIDES.MATTEOFLORA.COM</strong> e <strong>IO.MATTEOFLORA.COM</strong> oggi non sono siti: sono puri reindirizzamenti (rispettivamente verso la landing delle slide su Kit e verso un link del mio shortener) e non hanno tracciamento proprio.</p>
                                 <ul>
                                     <li>
                                         <p><a href="#kit-newsletter">Kit newsletter (Denkschule)</a></p>
@@ -1340,8 +1347,18 @@
                             <p>
                                 Gumroad è una piattaforma SaaS che consente a creatori e aziende di vendere prodotti digitali e fisici 
                                 direttamente ai clienti, gestendo pagamenti, distribuzione dei contenuti e reportistica. 
-                                Il servizio è gestito da Gumroad Inc., società soggetta al Diritto Statunitense, con infrastrutture cloud 
+                                Il servizio è gestito da Gumroad Inc., società soggetta al Diritto Statunitense, con infrastrutture cloud
                                 distribuite principalmente negli Stati Uniti e servizi CDN globali.
+                            </p>
+                            <p>
+                                Due precisazioni che riguardano me e non Gumroad. La prima: le pagine del mio negozio su Gumroad
+                                (<i>lastknight.gumroad.com</i>) hanno installato il mio <a href="#google-analytics">Google Analytics</a>, con le stesse
+                                regole descritte nella sezione dedicata, per capire da dove arrivano le persone e quali pagine prodotto
+                                funzionano. La seconda: quando Gumroad registra un acquisto, un mio sistema automatico invia a Google Analytics
+                                un evento di acquisto <b>da server a server</b> (il meccanismo che Google chiama <i>Measurement Protocol</i>):
+                                passa l’identificativo della transazione, il prodotto, l’importo e la valuta, senza nome, senza e-mail e senza
+                                cookie sul tuo browser. Mi serve per sapere quanto vendo e collegarlo alle fonti di traffico, non per
+                                profilarti.
                             </p>
 
                             <ul>
@@ -1353,6 +1370,7 @@
                                         <li><b>[R]</b> dati fiscali (gestiti direttamente da Gumroad)</li>
                                         <li><b>[S]</b> dati di pagamento e transazione (gestiti direttamente da Gumroad)</li>
                                         <li><b>[R]</b> dati di utilizzo relativi agli acquisti e ai contenuti scaricati</li>
+                                        <li><b>[T]</b> evento di acquisto inviato da server al mio Google Analytics (identificativo transazione, prodotto, importo, valuta: nessun dato anagrafico)</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -1369,6 +1387,9 @@
                                         </li>
                                         <li>
                                             <p>Analisi statistiche e miglioramento dei servizi (Legittimo Interesse)</p>
+                                        </li>
+                                        <li>
+                                            <p>Misurazione aggregata delle vendite e della loro provenienza tramite Google Analytics, lato pagina e da server (Legittimo Interesse)</p>
                                         </li>
                                     </ul>
                                 </li>
@@ -1622,6 +1643,28 @@
                                 Google Analytics è un servizio di analisi web fornito da Google LLC che consente di monitorare e analizzare  il traffico sui siti web. Nella configurazione conforme al GDPR, viene attivata l’anonimizzazione degli IP,  ridotta la raccolta di dati personali e disabilitata la condivisione dei dati con altri prodotti Google. <br/>
                                 I server di Google possono essere localizzati anche al di fuori dell’Unione Europea, ma il trattamento avviene nel rispetto delle Clausole Contrattuali Standard (SCC).
                             </p>
+                            <p>
+                                Dal 2026 uso <b>un’unica property</b> Google Analytics per tutto l’ecosistema (mgpf.it, www.matteoflora.com,
+                                video.matteoflora.com, le landing su Kit, lo shortener link.mgpf.it, il negozio su Gumroad): stessa configurazione,
+                                stesse regole, un solo posto dove guardare. Dentro la property i dati restano distinti per sito, ma il
+                                trattamento è uno.
+                            </p>
+                            <p>
+                                <b>Esportazione su BigQuery</b> » I dati raccolti da Google Analytics vengono anche esportati, in forma di eventi
+                                grezzi e pseudonimizzati (nessun nome, nessuna e-mail: identificativi tecnici di sessione e di dispositivo), in
+                                un dataset BigQuery di un mio progetto Google Cloud ospitato <b>in regione UE</b>, sia con export giornaliero sia in
+                                streaming. Mi serve per fare analisi che l’interfaccia di Google Analytics non consente e per non dipendere dalla
+                                sua retention. Il titolare del trattamento resto io; Google LLC è il fornitore dell’infrastruttura, con le stesse
+                                garanzie (SCC) descritte sotto.
+                            </p>
+                            <p>
+                                <b>Eventi inviati da server (Measurement Protocol)</b> » Alcuni eventi non partono dal tuo browser ma dai miei
+                                sistemi, da server a server, attraverso il Measurement Protocol di Google: oggi gli acquisti registrati su
+                                Gumroad (identificativo transazione, prodotto, importo, valuta) e, in prospettiva, le iscrizioni alla
+                                newsletter su Kit (come conteggio, senza l’indirizzo e-mail). Questi invii non usano cookie e non richiedono
+                                nulla sul tuo dispositivo; la base giuridica è il mio legittimo interesse a misurare in forma aggregata vendite e
+                                iscrizioni e a collegarle alle fonti di traffico.
+                            </p>
 
                             <ul>
                                 <li>
@@ -1631,6 +1674,8 @@
                                         <li><b>[R]</b> dati tecnici di connessione (browser, sistema operativo, tipo di dispositivo)</li>
                                         <li><b>[T]</b> dati di utilizzo del sito (pagine visitate, tempo di permanenza, interazioni, eventi)</li>
                                         <li><b>[T]</b> dati aggregati e statistici non riconducibili a singoli utenti</li>
+                                        <li><b>[T]</b> eventi grezzi pseudonimizzati esportati su BigQuery (identificativi tecnici, evento, pagina, sorgente, data e ora)</li>
+                                        <li><b>[T]</b> eventi inviati da server via Measurement Protocol (acquisti Gumroad: identificativo transazione, prodotto, importo, valuta; nessun dato anagrafico)</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -1647,8 +1692,10 @@
                                 <li>
                                     <p>Conservazione e cancellazione</p>
                                     <ul>
-                                        <li>I dati anonimizzati vengono conservati per un periodo massimo di 14 mesi (impostazione di retention minima consigliata)</li>
+                                        <li>I dati anonimizzati vengono conservati in Google Analytics per un periodo massimo di 14 mesi (impostazione di retention minima consigliata)</li>
                                         <li>Al termine del periodo di conservazione, i dati vengono eliminati automaticamente dai sistemi di Google</li>
+                                        <li>Gli eventi grezzi esportati su BigQuery restano nel mio progetto Google Cloud (regione UE) per un massimo di 26 mesi, poi vengono eliminati per scadenza automatica delle tabelle</li>
+                                        <li>Gli eventi inviati da server seguono la stessa retention della property Google Analytics e dell’export BigQuery</li>
                                     </ul>
                                 </li>
                                 <li>
